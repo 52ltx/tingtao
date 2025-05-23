@@ -5,3 +5,8 @@ zheJd:
   appKey: "xxx"
   sid: "xxx"
   unionId: "xxx"
+lanpixia:
+  frequency: 60
+  forward:
+    - source_id: "110"
+      send_name: "群或好友昵称/备注"

@@ -70,3 +70,15 @@ class LanPixia:
                     for item in result:
                         self.msg_id_list[source_id].append(item['new_msgid'])
         return res.json()
+
+def start_lanpixia():
+    lp = LanPixia()
+    lp.wx.send_text_msg("文件传输助手", "蓝皮虾开始监听")
+    while True:
+        # 多线程启动
+        for config in lp.config['forward']:
+            source_id = config['source_id']
+            send_group_id = config['send_name']
+            print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}-开始执行", source_id, send_group_id)
+            lp.group_preview_list(source_id, send_group_id, "pre")
+        time.sleep(lp.config['frequency'])
