@@ -10,3 +10,5 @@ lanpixia:
   forward:
     - source_id: "110"
       send_name: "群或好友昵称/备注"
+  guide_names:
+    - "撸鞋群"
