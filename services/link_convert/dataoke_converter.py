@@ -108,3 +108,33 @@ class DaTaoKeConverter:
         except requests.RequestException as e:
             logger.error(f"转链失败：{e}")
             return {"error": "Request failed", "message": str(e)}
+    def query_goods(self, type,pageId,pageSize,keyword):
+        """
+        超级搜索查询商品列表
+        :param type:    搜索类型：0-综合结果，1-大淘客商品，2-联盟商品
+        :param pageId:  请求的页码，默认参数1
+        :param pageSize:每页条数，默认为20，最大值100
+        :param keyword: 关键词搜索
+        :return:
+        """
+
+        url = "https://openapi.dataoke.com/api/goods/list-super-goods"
+        params = _build_common_params({
+            "version": "1.3.0",
+            "type": type,
+            "pageId": pageId,
+            "pageSize": pageSize,
+            "keyWords": keyword
+        })
+        logger.info(f"开始搜索：{params}")
+        try:
+            response = self.req.get(url, params=params)
+            logger.info(f"搜索结果：{response.json()}")
+            return response.json()
+        except requests.RequestException as e:
+            logger.error(f"转链失败：{e}")
+            return {"error": "Request failed", "message": str(e)}
+
+if __name__ == '__main__':
+    converter = DaTaoKeConverter()
+    converter.query_goods(type=0,pageId=1,pageSize=1,keyword="半袖")
