@@ -1,4 +1,8 @@
 .idea
 .venv
+dist
+build
+*.spec
 *.yml
+*.txt
 *.log
