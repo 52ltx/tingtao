@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
+# @Author  : lintingxue
 import os
-import re
 import time
 from datetime import datetime
 
-# -*- coding: utf-8 -*-
-# @Author  : lintingxue
+
 import requests
 
 from config.loader import CONFIG
@@ -43,6 +43,7 @@ class LanPixia:
                 result = res_json['result']
                 if self.msg_id_list.get(source_id):
                     for item in result:
+                        print(item)
                         msg_type = item['msg_type']
                         content = item['content']
                         if item['new_msgid'] not in self.msg_id_list[source_id]:
