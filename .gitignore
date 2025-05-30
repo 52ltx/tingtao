@@ -6,3 +6,5 @@ build
 *.yml
 *.txt
 *.log
+*/logs/
+*/__pycache__/*
